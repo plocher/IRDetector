@@ -2,7 +2,7 @@
 #define _CIRCUIT_
 #include <elapsedMillis.h>
 
-//#define DEBUG
+// #define DEBUG
 
 #define HEADROOM 180
 #define HYSTERESIS 2000    // in mS units, 2000 = 2.0 seconds
@@ -32,15 +32,15 @@ public:
 };
     
     int check(void) {
-        digitalWrite(irPin, 0);
+        digitalWrite(irPin, 0);            // turn off IR transmitter
         delay(5);
-        int r1 =  analogRead(sensorPin);
-        digitalWrite(irPin, 1);
+        int r1 =  analogRead(sensorPin);   // read ambient light intensity
+        digitalWrite(irPin, 1);            // turn ON IR source
         delay(5);
-        int r2 = analogRead(sensorPin);
-        digitalWrite(irPin, 0);
+        int r2 = analogRead(sensorPin);    // see if anything is reflecting
+        digitalWrite(irPin, 0);            // make sure things are turned off when done
      
-        if ((r2 - r1) > HEADROOM) {  // detected...
+        if ((r2 - r1) > HEADROOM) {        // if a major positive difference, something has been detected...
             delaytime = 0;  // expiration timer is reset every time detection is seen
             if (detected == false) { // newly triggered
 #ifdef DEBUG

@@ -1,7 +1,9 @@
 /*
  Arduino based proximity sensor
  Based very loosely on work done by Dustin Andrews 2012
- License: Creative Commons Unported http://creativecommons.org/licenses/by/3.0/
+
+ Copyright (c) 2014 John Plocher, released under the terms of the MIT License (MIT)
+ 
  */
 #include <elapsedMillis.h>
 
